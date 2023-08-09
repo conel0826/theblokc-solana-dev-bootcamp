@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Program, AnchorProvider, web3 } from "@project-serum/anchor";
 import { Buffer } from "buffer";
 import logo from "./Airplane-image-royalty-free-PNG.png"
+import logo2 from "./Ph_fil_cebu.png"
 
 window.Buffer = Buffer;
 var walletConnection = false;
@@ -220,6 +221,7 @@ function App() {
       </p>
       <div className="cool">
       <img src={logo} className="App-logo" alt="logo" />
+      <img src={logo2} className="App-logo" alt="logo" />
       </div>
 
     </div>
