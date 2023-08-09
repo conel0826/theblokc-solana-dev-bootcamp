@@ -3,13 +3,16 @@ import idl from "./idl.json";
 import React, { useState } from "react";
 import { Program, AnchorProvider, web3 } from "@project-serum/anchor";
 import { Buffer } from "buffer";
+import logo from "./Airplane-image-royalty-free-PNG.png"
 
 window.Buffer = Buffer;
+var walletConnection = false;
 
 function App() {
   const [displayText, setDisplaySelectedText] = useState("");
   const [userInputText, setUserInputValue] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
+  const [link, setLink] = useState("");
 
   const [options, setOptions] = useState([]);
 
@@ -27,6 +30,12 @@ function App() {
 
   const connectWallet = async () => {
     setUserInputValue("");
+    if (walletConnection) {
+      alert(
+        "wallet already connected!"
+      );
+      return;
+    }
     if (!window.solana) {
       alert(
         "Solana wallet not found. Please install Sollet or Phantom extension."
@@ -37,12 +46,23 @@ function App() {
       await window.solana.connect();
       let provider = await getProvider();
       console.log("ex: ", provider.wallet.publicKey.toString());
+      walletConnection = true;
+      alert(
+        "wallet connected!"
+      );
     } catch (err) {
       console.error("Error connecting wallet:", err);
     }
   };
 
   const submission = async () => {
+    if(!walletConnection){
+      alert(
+        "Solana wallet not found. Please connect Phantom Wallet First!"
+      );
+      return
+    }
+
     const new_account = web3.Keypair.generate();
     const provider = await getProvider();
     const programID = new web3.PublicKey(
@@ -74,6 +94,12 @@ function App() {
 
   // get list of transaction.. eme
   const updateTransactionSignatures = async () => {
+    if(!walletConnection){
+      alert(
+        "Solana wallet not found. Please connect Phantom Wallet First!"
+      );
+      return
+    }
     try {
       const provider = await getProvider();
       const programID = new web3.PublicKey(
@@ -84,15 +110,25 @@ function App() {
       });
 
       // the fun route
-      var userSignaturesDetails = await connection.getSignaturesForAddress(provider.wallet.publicKey);
-      var userSignatures = userSignaturesDetails.map((userSignatureDetail)=>userSignatureDetail.signature.trim())
-      console.log("userSignatures: ",userSignatures);
+      var userSignaturesDetails = await connection.getSignaturesForAddress(
+        provider.wallet.publicKey
+      );
+      var userSignatures = userSignaturesDetails.map((userSignatureDetail) =>
+        userSignatureDetail.signature.trim()
+      );
+      console.log("userSignatures: ", userSignatures);
 
-      var programSignaturesDetails = await connection.getSignaturesForAddress(programID);
-      var programSignatures = programSignaturesDetails.map((programSignatureDetail)=>programSignatureDetail.signature.trim())
+      var programSignaturesDetails = await connection.getSignaturesForAddress(
+        programID
+      );
+      var programSignatures = programSignaturesDetails.map(
+        (programSignatureDetail) => programSignatureDetail.signature.trim()
+      );
       console.log("programSignatures: ", programSignatures);
 
-      var transactionSignatures = programSignatures.filter((element) => userSignatures.includes(element));
+      var transactionSignatures = programSignatures.filter((element) =>
+        userSignatures.includes(element)
+      );
       console.log("transactionSignatures: ", transactionSignatures);
 
       if (transactionSignatures.length === 0) {
@@ -108,20 +144,33 @@ function App() {
   };
 
   const checkTransaction = async (event) => {
-    await setSelectedOption(event.target.value);
+    if(!walletConnection){
+      alert(
+        "Solana wallet not found. Please connect Phantom Wallet First!"
+      );
+      return
+    }
     const provider = await getProvider();
+    await setSelectedOption(event.target.value);
+    setLink(`https://explorer.solana.com/tx/${selectedOption}?cluster=devnet`)
+    console.log(`https://explorer.solana.com/tx/${selectedOption}?cluster=devnet`)
+    
     try {
       console.log(selectedOption);
       const transaction = await provider.connection.getTransaction(
         selectedOption
       );
       console.log(transaction);
-      setDisplaySelectedText(transaction.meta.logMessages[8])
+      setDisplaySelectedText(
+        transaction.meta.logMessages[8].slice(28)
+      );
     } catch (error) {
       console.error("Error fetching transaction:", error);
+      alert(
+        "You have no address selected!"
+      );
     }
   };
-
 
   return (
     <div className="Kapogian">
@@ -139,10 +188,13 @@ function App() {
       , afterward, <button onClick={submission}>click here to submit</button>,
       note this submission, and more alike, are sent to the Solana blockchain,
       with it, an associated public address; If such transaction exists,{" "}
-      <button onClick={updateTransactionSignatures}>click here to refresh the following:</button>
+      <button onClick={updateTransactionSignatures}>
+        click here to refresh the following:
+      </button>
       <select value={selectedOption} onChange={handleOptionChange}>
         <option hidden value="">
-          navigation of viewing and selection (note transactions may take time to render)
+          navigation of viewing and selection (note transactions may take time
+          to render)
         </option>
         {options.map((option, index) => (
           <option key={index} value={option}>
@@ -150,8 +202,26 @@ function App() {
           </option>
         ))}
       </select>
-      ,<button onClick={checkTransaction}>once selected an address, click here to check</button>, here:
-      <p>{displayText}</p>
+      ,
+      <button onClick={checkTransaction}>
+        once selected an address, click here to check
+      </button>
+      , here:
+      <p>
+      Text Stored:{' '}
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="App-logo"
+        >
+          {displayText}
+        </a>
+      </p>
+      <div className="cool">
+      <img src={logo} className="App-logo" alt="logo" />
+      </div>
+
     </div>
   );
 }
