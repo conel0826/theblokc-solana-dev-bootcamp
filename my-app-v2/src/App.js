@@ -5,6 +5,7 @@ import { Program, AnchorProvider, web3 } from "@project-serum/anchor";
 import { Buffer } from "buffer";
 import logo from "./Airplane-image-royalty-free-PNG.png"
 import logo2 from "./Ph_fil_cebu.png"
+import logo3 from "./SOLANA_cryptocurrency_merchandise_merch_tshirt_black_logo_1024x1024.webp"
 
 window.Buffer = Buffer;
 var walletConnection = false;
@@ -219,6 +220,7 @@ function App() {
         </a>
       </p>
       <div className="cool">
+      <img src={logo3} className="App-logo" alt="logo" />
       <img src={logo} className="App-logo" alt="logo" />
       <img src={logo2} className="App-logo" alt="logo" />
       </div>
