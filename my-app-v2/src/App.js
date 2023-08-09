@@ -5,7 +5,7 @@ import { Program, AnchorProvider, web3 } from "@project-serum/anchor";
 import { Buffer } from "buffer";
 import logo from "./Airplane-image-royalty-free-PNG.png"
 import logo2 from "./Ph_fil_cebu.png"
-import logo3 from "./SOLANA_cryptocurrency_merchandise_merch_tshirt_black_logo_1024x1024.webp"
+import logo3 from "./363899081_323188883394043_2077306298904923730_n.jpg"
 
 window.Buffer = Buffer;
 var walletConnection = false;
