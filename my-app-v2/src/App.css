@@ -24,6 +24,13 @@
   color: white;
 }
 
+.Kapogian{
+  background-color: pink;
+  padding: 20px;
+  text-align: justify;
+  /* justify-content: ; */
+}
+
 .App-link {
   color: #61dafb;
 }
