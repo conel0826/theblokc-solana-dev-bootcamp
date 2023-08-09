@@ -87,35 +87,23 @@ function App() {
       const connection = new web3.Connection(network, {
         preflightCommitment: "processed",
       });
-      // let transactionList = await connection.getSignaturesForAddress();
-      const signatures = await connection.getConfirmedSignaturesForAddress2(provider.wallet.publicKey, { commitment: 'confirmed' });
 
-      console.log(signatures)
-      // const transactionSignatures = signatures.filter((signature) => {
-      //   // console.log()
-      //   console.log(signature.signer)
-      //   console.log(provider.wallet.publicKey)
-      //   return signature.signer.equals(provider.wallet.publicKey);
-      // });
-      // console.log(transactionSignatures)
+      // the fun route
+      var userSignaturesDetails = await connection.getSignaturesForAddress(provider.wallet.publicKey);
+      var userSignatures = userSignaturesDetails.map((userSignatureDetail)=>userSignatureDetail.signature.trim())
+      console.log("userSignatures: ",userSignatures);
 
-      if (signatures.length === 0) {
+      var programSignaturesDetails = await connection.getSignaturesForAddress(programID);
+      var programSignatures = programSignaturesDetails.map((programSignatureDetail)=>programSignatureDetail.signature.trim())
+      console.log("programSignatures: ", programSignatures);
+
+      var transactionSignatures = programSignatures.filter((element) => userSignatures.includes(element));
+      console.log("transactionSignatures: ", transactionSignatures);
+
+      if (transactionSignatures.length === 0) {
         throw new Error("No transactions found for the given program ID.");
       }
-
-      // let signatureList = transactionList.map(
-      //   (transaction) => transaction.signature
-      // );
-      // let signatureTest = await Promise.all(signatureList.map(signature => signature.toString()));
-      // let transactionDetails = await Promise.all(signatureTest.map(async signature => await connection.getTransaction(signature)));
-      // console.log(transactionDetails[0]);
-      // for (let i = 7; i < transactionDetails.length; i++) {
-      //   console.log(transactionDetails[i]);
-      // }
-      // for (let i = 0; i < transactionSignatures.length; i++) {
-      //   console.log(transactionSignatures[i]);
-      // }
-      // setOptions(signatureTest);
+      setOptions(transactionSignatures);
     } catch (error) {
       console.error("Error:", error);
     }
