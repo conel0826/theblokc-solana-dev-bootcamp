@@ -3,13 +3,10 @@ import idl from "./idl.json";
 import React, { useState } from "react";
 import { Program, AnchorProvider, web3 } from "@project-serum/anchor";
 import { Buffer } from "buffer";
-import { bs58 } from "bs58";
 
 window.Buffer = Buffer;
 
 function App() {
-  const [walletAddress, setWalletAddress] = useState("");
-
   const [displayText, setDisplaySelectedText] = useState("");
   const [userInputText, setUserInputValue] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
@@ -39,8 +36,6 @@ function App() {
     try {
       await window.solana.connect();
       let provider = await getProvider();
-      const walletAddress = provider.wallet.publicKey.toString();
-      setWalletAddress(walletAddress);
       console.log("ex: ", provider.wallet.publicKey.toString());
     } catch (err) {
       console.error("Error connecting wallet:", err);
@@ -129,7 +124,7 @@ function App() {
 
 
   return (
-    <div>
+    <div className="Kapogian">
       First,{" "}
       <button onClick={connectWallet}>
         click here to connect your local phantom wallet
@@ -143,11 +138,11 @@ function App() {
       />
       , afterward, <button onClick={submission}>click here to submit</button>,
       note this submission, and more alike, are sent to the Solana blockchain,
-      with an associated public address; If such exists,{" "}
-      <button onClick={updateTransactionSignatures}>refresh button</button>
+      with it, an associated public address; If such transaction exists,{" "}
+      <button onClick={updateTransactionSignatures}>click here to refresh the following:</button>
       <select value={selectedOption} onChange={handleOptionChange}>
         <option hidden value="">
-          view and select here
+          navigation of viewing and selection (note transactions may take time to render)
         </option>
         {options.map((option, index) => (
           <option key={index} value={option}>
@@ -155,7 +150,7 @@ function App() {
           </option>
         ))}
       </select>
-      ,<button onClick={checkTransaction}>click here to check</button>, here:
+      ,<button onClick={checkTransaction}>once selected an address, click here to check</button>, here:
       <p>{displayText}</p>
     </div>
   );
