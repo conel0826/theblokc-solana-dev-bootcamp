@@ -1,0 +1,12 @@
+/home/conel0826/Project/hello_solana/target/release/deps/libthiserror_impl-99f88ce7eda18cfc.so: /home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/lib.rs /home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/ast.rs /home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/attr.rs /home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/expand.rs /home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/fmt.rs /home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/generics.rs /home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/prop.rs /home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/valid.rs
+
+/home/conel0826/Project/hello_solana/target/release/deps/thiserror_impl-99f88ce7eda18cfc.d: /home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/lib.rs /home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/ast.rs /home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/attr.rs /home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/expand.rs /home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/fmt.rs /home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/generics.rs /home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/prop.rs /home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/valid.rs
+
+/home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/lib.rs:
+/home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/ast.rs:
+/home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/attr.rs:
+/home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/expand.rs:
+/home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/fmt.rs:
+/home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/generics.rs:
+/home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/prop.rs:
+/home/conel0826/.cargo/registry/src/github.com-1ecc6299db9ec823/thiserror-impl-1.0.44/src/valid.rs:
