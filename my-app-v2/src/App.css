@@ -9,7 +9,6 @@
   height: 40vmin;
   pointer-events: none;
   justify-self: center;
-  background-color: #282c34;
 }
 
 @media (prefers-reduced-motion: no-preference) {

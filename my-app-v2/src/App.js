@@ -214,7 +214,6 @@ function App() {
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className="App-logo"
         >
           {displayText}
         </a>
