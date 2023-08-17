@@ -1,0 +1,15 @@
+[features]
+seeds = false
+skip-lint = false
+[programs.localnet]
+client_string_input = "8WkpXvDdMrGXPcjkKa8XFBBCkfamMtoxbLmBMG2bPx6N"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "devnet"
+wallet = "/home/conel0826/theblokc-solana-dev-bootcamp/f2f/day2/recover/key.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
