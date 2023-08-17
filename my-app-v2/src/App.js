@@ -1,5 +1,5 @@
 import "./App.css";
-import idl from "./idl.json";
+import idl from "./client_string_input.json";
 import React, { useState } from "react";
 import { Program, AnchorProvider, web3 } from "@project-serum/anchor";
 import { Buffer } from "buffer";
@@ -68,7 +68,7 @@ function App() {
     const new_account = web3.Keypair.generate();
     const provider = await getProvider();
     const programID = new web3.PublicKey(
-      "2zckoqD4m172afxwgXVxG31j3TmWMmTwqWE4gSPa9j5a"
+      "8WkpXvDdMrGXPcjkKa8XFBBCkfamMtoxbLmBMG2bPx6N"
     );
     const program = new Program(idl, programID, provider);
     console.log(userInputText);
@@ -105,7 +105,7 @@ function App() {
     try {
       const provider = await getProvider();
       const programID = new web3.PublicKey(
-        "2zckoqD4m172afxwgXVxG31j3TmWMmTwqWE4gSPa9j5a"
+        "8WkpXvDdMrGXPcjkKa8XFBBCkfamMtoxbLmBMG2bPx6N"
       );
       const connection = new web3.Connection(network, {
         preflightCommitment: "processed",
@@ -164,7 +164,7 @@ function App() {
       );
       console.log(transaction);
       setDisplaySelectedText(
-        transaction.meta.logMessages[8].slice(28)
+        transaction.meta.logMessages[8].slice(13)
       );
     } catch (error) {
       console.error("Error fetching transaction:", error);
