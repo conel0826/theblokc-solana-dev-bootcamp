@@ -162,6 +162,7 @@ function App() {
       const transaction = await provider.connection.getTransaction(
         selectedOption
       );
+      
       console.log(transaction);
       setDisplaySelectedText(
         transaction.meta.logMessages[8].slice(13)
@@ -193,6 +194,7 @@ function App() {
       <button onClick={updateTransactionSignatures}>
         click here to refresh the following:
       </button>
+      ,{' '}
       <select value={selectedOption} onChange={handleOptionChange}>
         <option hidden value="">
           navigation of viewing and selection (note transactions may take time
@@ -204,7 +206,7 @@ function App() {
           </option>
         ))}
       </select>
-      ,
+      ,{' '}
       <button onClick={checkTransaction}>
         once selected an address, click here to check
       </button>
